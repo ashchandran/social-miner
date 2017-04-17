@@ -18,6 +18,7 @@
     "grunt-contrib-uglify": "1.0.1",
     "grunt-contrib-watch": "1.0.0",
     "grunt-sails-linker": "~0.10.1",
+    "grunt-sass": "^2.0.0",
     "grunt-sync": "0.5.2",
     "handlebars": "^4.0.6",
     "include-all": "^1.0.0",
@@ -35,8 +36,5 @@
     "url": "git://github.com/anonymous node/sails user/socialMiner.git"
   },
   "author": "anonymous node/sails user",
-  "license": "",
-  "devDependencies": {
-    "grunt-sass": "^2.0.0"
-  }
+  "license": ""
 }
