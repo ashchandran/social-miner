@@ -1,0 +1,20 @@
+#homepage {
+    .card {
+        margin: 10px;
+        font-size: 0.9rem;
+
+        .col {
+            padding: 0.75rem;
+        }
+
+        .status_message {
+            width: 100%;
+        }
+
+        .label {
+            display: block;
+            color: #6e6e6e;
+            font-size: 0.7rem;
+        }
+    }
+}
