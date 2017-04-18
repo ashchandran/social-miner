@@ -1,8 +1,14 @@
 $(document).on("home-init", function () {
-    $.ajax("/getData")
-        .done(function (data) {
-            addRecords(data);
-        })
+
+    $("#filter-1").on("change", function () {
+        console.log($(this).val())
+        if ($(this).val() == "facebook") {
+            $.ajax("/getData")
+            .done(function (data) {
+                addRecords(data);
+            })
+        }
+    })
 });
 
 var hiddenFields = [
@@ -35,30 +41,9 @@ var fieldMapping = {
     neu: "Neutral", 
 }
 
-// var fieldMapping = [
-//     {label: "Post", id: "status_message"},
-//     {label: "Date Published", id: "status_published"},
-//     {label: "Reactions", id: "num_reactions"},
-//     {label: "Comments", id: "num_comments"},
-//     {label: "Shares", id: "num_shares"},
-//     {label: "Likes", id: "num_likes"},
-//     {label: "Loves", id: "num_loves"},
-//     {label: "Wows", id: "num_wows"},
-//     {label: "Hahas", id: "num_hahas"},
-//     {label: "Sads", id: "num_sads"},
-//     {label: "Angrys", id: "num_angrys"},
-//     {label: "Likes Score", id: "num_likes_score"},
-//     {label: "Loves Score", id: "num_loves_score"},
-//     {label: "Wows Score", id: "num_wows_score"},
-//     {label: "Hahas Score", id: "num_hahas_score"},
-//     {label: "Sads Score", id: "num_sads_score"},
-//     {label: "Angrys Score", id: "num_angrys_score"},
-//     {label: "Negativity", id: "neg"},
-//     {label: "Positivity", id: "pos"},
-//     {label: "Neutral", id: "neu"},
-// ]
-
 function addRecords(records) {
+    var filterList = [];
+    var rows = [];
 
     // Iterate through each record
     records.forEach(function (record) {
@@ -89,6 +74,23 @@ function addRecords(records) {
                 }
             }
         }
-        $("#record-container").append($row);
+        rows.push($row);
+    });
+    $("#record-container").append(rows);
+
+    // Add filter
+    for (var key in records[0]) {
+        if (fieldMapping.hasOwnProperty(key)) {
+            var $filter = $('<li class="padding">\
+                                <input type="checkbox" id="'+key+'" class="filled-in col-filters" checked="checked" value="'+key+'"/>\
+                                <label for="'+key+'">'+ fieldMapping[key] +'</label>\
+                            </li>');
+
+            filterList.push($filter);
+        }
+    }
+    $("#slide-out").append(filterList);
+    $(".col-filters").on("change", function () {
+        $("."+this.value).toggle(this.checked);
     })
 }

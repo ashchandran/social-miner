@@ -18,3 +18,50 @@
         }
     }
 }
+
+.filter {
+    background-color: white;
+    .row {
+        margin: 10px 0 20px;
+    }
+
+    .select-wrapper {
+        .caret {
+            right: 10px;
+        }
+        input.select-dropdown {
+            box-sizing: border-box;
+            margin-bottom: 0;
+            border: 2px solid #e1e1e1;
+            border-radius: 5px;
+            padding: 7px;
+            line-height: 1rem;
+            height: auto;
+        }
+    }
+
+    label {
+        color: #5e35b1;
+        font-weight: bold;
+    }
+
+    a.button-collapse {
+        position: relative;
+        color: black;
+        background-color: #f1f1f1;
+        padding: 10px;
+        padding-top: 0;
+        border-radius: 3px;
+        top: 17px;
+
+        .material-icons {
+            position: relative;
+            top: 6px;
+            margin-right: 10px;
+        }
+    }
+}
+
+.side-nav li.padding {
+    padding-left: 20px;
+}

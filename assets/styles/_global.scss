@@ -1,3 +1,9 @@
 .section {
     background-color: #ededed
 }
+
+li.menu {
+    &>a {
+        color: white;
+    }
+}
