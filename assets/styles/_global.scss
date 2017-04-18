@@ -1,9 +1,16 @@
-.section {
-    background-color: #ededed
-}
-
 li.menu {
     &>a {
         color: white;
     }
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    background-color: #ededed;
+    flex: 1 0 auto;
 }
