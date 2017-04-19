@@ -8,7 +8,9 @@ var data = require("../data/data.json");
 
 module.exports = {
 	index: function (req, res) {
-        return res.view("homepage");
+        return res.view("homepage", {
+            header: {home:true}
+        });
     },
 
     getData: function (req, res) {
