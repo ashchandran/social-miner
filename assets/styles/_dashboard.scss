@@ -1,7 +1,32 @@
+nav, footer {
+    position: relative;
+    z-index: 10;
+}
 #dashboard {
     #add-graph {
         position: fixed;
         top: 30px;
         right: 30px;
+        z-index: 11;
     }
+
+    .side-nav {
+        z-index: 9;
+        padding-top: 90px;
+
+        li {
+            padding-left: 10px;
+            padding-right: 10px;
+            position: relative;
+
+            label {
+                line-height: initial;
+
+            }
+        }
+    }
+}
+
+#sidenav-overlay {
+    z-index: 8;
 }

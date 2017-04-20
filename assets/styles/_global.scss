@@ -14,3 +14,22 @@ main {
     background-color: #ededed;
     flex: 1 0 auto;
 }
+
+div.select-wrapper {
+    .caret {
+        right: 10px;
+    }
+    input.select-dropdown {
+        box-sizing: border-box;
+        margin-bottom: 0;
+        border: 2px solid #e1e1e1;
+        border-radius: 5px;
+        padding: 7px;
+        line-height: 1rem;
+        height: auto;
+    }
+    &+label {
+    color: #5e35b1;
+    font-weight: bold;
+}
+}

@@ -3,5 +3,9 @@ $(document).ready(function () {
     $(".button-collapse").sideNav();
     $('select').material_select();
 
-    $(document).trigger("home-init");
+    if(window.location.pathname == "/") {
+        $(document).trigger("home-init");
+    } else if (window.location.pathname == "/dashboard") {
+        $(document).trigger("dash-init");
+    }
 })
