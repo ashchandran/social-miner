@@ -19,6 +19,7 @@ div.select-wrapper {
     .caret {
         right: 10px;
     }
+    
     input.select-dropdown {
         box-sizing: border-box;
         margin-bottom: 0;
@@ -28,8 +29,9 @@ div.select-wrapper {
         line-height: 1rem;
         height: auto;
     }
+
     &+label {
-    color: #5e35b1;
-    font-weight: bold;
-}
+        color: #5e35b1;
+        font-weight: bold;
+    }
 }

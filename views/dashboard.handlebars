@@ -1,6 +1,6 @@
 <main id="dashboard">
     <div class="container">
-        <a class="btn-floating btn-large waves-effect waves-light red button-collapse" data-activates="graph-form" id="add-graph"><i class="material-icons">add</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red" id="add-graph"><i class="material-icons">add</i></a>
         <div class="row">
             <div class="col s12 m6 ">
                 <div class="card-panel">
@@ -11,17 +11,17 @@
             
         </div>
     </div>        
-    {{!--Sidenav--}}
-    <ul id="graph-form" class="side-nav">
-        <li>
-            <select>
-                <option value="" disabled selected>Choose your option</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-            </select>
-            <label>Graphs</label>
-        </li>
-    </ul>
+
+    <div class="graph-container" id="graph-builder">
+        <div class="row">
+            <ul class="col l4 s12" id="graph-form"></ul>
+            <div class="col l8 hide-on-small" id="graph-area">
+
+            </div>
+        </div>
+
+
+    </div>
     
+    <script src="/js/dependencies/plotly-latest.min.js"></script>
 </main>
