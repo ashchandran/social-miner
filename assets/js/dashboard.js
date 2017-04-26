@@ -8,8 +8,10 @@ function GraphBuilder() {
 GraphBuilder.prototype.init = function () {
     var self = this;
 
-    // Display graph selector
-    // $("#xaxis", "#yaxis").parent().hide();
+    // Get data
+    self.getData();
+
+    // Display graph selector and hide the rest
     $("#xaxis").parent().hide();
     $("#yaxis").parent().hide();
     $("#create-graph-btn").parent().hide();
@@ -20,6 +22,7 @@ GraphBuilder.prototype.init = function () {
 
     var rows = [];
 
+    // Display data options
     for (var key in fieldMapping) {
         if (fieldMapping.hasOwnProperty(key)) {
             var label = fieldMapping[key];
@@ -30,10 +33,30 @@ GraphBuilder.prototype.init = function () {
         }
     }
 
+    // Show additional fields based on graph
     $graphSelect.on("change", function () {
         self.dropdown("xaxis", "X - Axis",rows).parent().show();
         self.dropdown("yaxis", "Y - Axis",rows).parent().show();
         $("#create-graph-btn").parent().show();
+    });
+
+    // Create graph click event
+    $("#create-graph-btn").on("click",function () {
+        var $xaxis = $("#xaxis");
+        var $yaxis = $("#yaxis");
+
+        if ($xaxis.val() && $yaxis.val()) {
+            var data = [{}];
+            data[0].x = self.data.map(function(a) {return a[$xaxis.val()];});
+            data[0].y = self.data.map(function(a) {return a[$yaxis.val()];});
+
+            data[0].mode= 'markers';
+            data[0].type= "scatter";
+
+            self.plot({data:data})
+        } else {
+            toastContainer.toast("Select the rows to build the chart with");
+        }
     })
 }
 
@@ -62,6 +85,19 @@ GraphBuilder.prototype.getData = function () {
         })
 }
 
+GraphBuilder.prototype.plot = function (opt) {
+    var graphEle = opt.element || "graph-area";
+    var data = opt.data || [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 2, 4, 8, 16],
+        mode: 'markers',
+        type: "scatter"
+    }];
+
+    Plotly.purge(graphEle);
+	Plotly.plot(graphEle, data);
+}
+
 
 // Document Init
 $(document).on("dash-init", function () {
@@ -75,20 +111,7 @@ $(document).on("dash-init", function () {
     $("#add-graph").on("click", function () {
         $(this).removeClass("pulse");
         $("#graph-builder").toggle();
+        graph.plot({});
     });
-    graphTest({});
     graph.init();
 });
-
-function graphTest(opt) {
-    var graphEle = opt.element || "graph-area";
-    var data = opt.data || [{
-        x: [1, 2, 3, 4, 5],
-        y: [1, 2, 4, 8, 16],
-        mode: 'markers',
-        type: "scatter"
-    }];
-
-	Plotly.plot(graphEle, data);
-}
-

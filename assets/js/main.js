@@ -1,3 +1,5 @@
+var toastContainer = new ToastContainer({});
+
 $(document).ready(function () {
     // Default initializations
     $(".button-collapse").sideNav();
