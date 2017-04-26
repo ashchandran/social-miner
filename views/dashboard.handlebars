@@ -14,7 +14,12 @@
 
     <div class="graph-container" id="graph-builder">
         <div class="row">
-            <ul class="col l4 s12" id="graph-form"></ul>
+            <ul class="col l4 s12" id="graph-form">
+                <li><select name="select-graph" id="select-graph"></select><label for="select-graph"></label></li>
+                <li><select name="xaxis" id="xaxis"></select><label for="xaxis"></label></li>
+                <li><select name="yaxis" id="yaxis"></select><label for="yaxis"></label></li>
+                <li><button class="btn red waves-effect waves-light" id="create-graph-btn">Create Graph</button></li>
+            </ul>
             <div class="col l8 hide-on-small" id="graph-area">
 
             </div>
